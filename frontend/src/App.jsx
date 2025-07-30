@@ -4,10 +4,10 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 const storyData = {
-  2020: "In 2020, humanity first made contact with the LoreOrbit Entity.",
-  2021: "A rebellion formed under the lunar shadows.",
-  2022: "The Canon Council declared universal narrative sovereignty.",
-  2023: "Anomalous archives were leaked to the public.",
+  0: "In 2020, humanity first made contact with the LoreOrbit Entity.",
+  1: "A rebellion formed under the lunar shadows.",
+  2: "The Canon Council declared universal narrative sovereignty.",
+  3: "Anomalous archives were leaked to the public.",
 };
 
 // Header
@@ -28,11 +28,9 @@ function Header() {
 
 // Body
 
-function Timeline() {
-  const [selectedYear, setSelectedYear] = useState(2020);
-
+function Timeline({selectedYear, setSelectedYear}) {
     return (
-    <div className="body">
+    <div className="timelineBody">
       <div className="timeline">
         {Object.keys(storyData).map((year) => (
           <button 
@@ -44,63 +42,59 @@ function Timeline() {
           </button>
         ))}
       </div>
+    </div>
+  );
+}
 
-      <div className="storyBox">
-        {storyData[selectedYear]}
-      </div>
+function StoryText({selectedYear}) {
+  return (
+    <div className="storyBox">
+      {storyData[selectedYear]}
+    </div>
+  );
+}
+
+function Votes() {
+  return (
+    <div className='votingSection'>
+        <button className="voteButton">up</button>
+        <span className="voteCount">0</span>
+        <button className="voteButton">down</button>
     </div>
   );
 }
 
 function Body() {
+  const [selectedYear, setSelectedYear] = useState(0);
   return (
-    <div>
-      <Timeline />
-
-      Voting Here
+    <div className='body'>
+      <Timeline selectedYear={selectedYear} setSelectedYear={setSelectedYear}/>
+      <StoryText selectedYear={selectedYear}/>
+      <Votes />
     </div>
   );
 }
 
 function Footer() {
   return (
-    <div>
-      Footer
-    </div>
+    <footer className="footer">
+      <p>&copy; {new Date().getFullYear()} LoreOrbit. All rights reserved.
+      </p>
+        
+      <p>
+      Built by the LoreOrbit Collective · <a href="https://github.com/aneerati/LoreOrbit">GitHub</a>
+      </p>
+      
+    </footer>
   );
 }
 
 export default function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <> 
+    <div className='appContainer'> 
       <Header />
       <Body />
       <Footer />
-    </>
-   
-    // <>
-    //   <div>
-    //     <a href="https://vite.dev" target="_blank">
-    //       <img src={viteLogo} className="logo" alt="Vite logo" />
-    //     </a>
-    //     <a href="https://react.dev" target="_blank">
-    //       <img src={reactLogo} className="logo react" alt="React logo" />
-    //     </a>
-    //   </div>
-    //   <h1>Vite + React</h1>
-    //   <div className="card">
-    //     <button onClick={() => setCount((count) => count + 1)}>
-    //       count is {count}
-    //     </button>
-    //     <p>
-    //       Edit <code>src/App.jsx</code> and save to test HMR
-    //     </p>
-    //   </div>
-    //   <p className="read-the-docs">
-    //     Click on the Vite and React logos to learn more
-    //   </p>
-    // </>
+    </div>
   )
 }

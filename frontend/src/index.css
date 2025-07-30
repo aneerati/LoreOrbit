@@ -66,6 +66,19 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.appContainer {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .header {
   text-align: center;
 }
@@ -73,6 +86,10 @@ button:focus-visible {
 .headerTitle {
   font-weight: bold;
   font-size: xx-large;
+}
+
+.body {
+  flex: 1;
 }
 
 .storylineTitle {
@@ -89,11 +106,12 @@ button:focus-visible {
 }
 
 .timelineButton {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
   background-color: #f0f0f0;
   border: none;
-  padding: 0.5rem 1rem;
+  border-radius: 6px;
   cursor: pointer;
-  font-weight: bold;
   transition: background-color 0.2s;
 }
 
@@ -115,3 +133,50 @@ button:focus-visible {
   border-radius: 8px;
   background-color: #fafafa;
 }
+
+.timelineBody {
+  display: flex;
+  justify-content: center; 
+}
+
+.votingSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.voteButton {
+  font-size: 1.5rem;
+  padding: 0.3rem 0.8rem;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.voteButton:hover {
+  background-color: #dcdcdc;
+}
+
+.voteCount {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.footer {
+  margin-top: 3rem;
+  padding: 1rem;
+  background-color: #1a1a1a;
+  border-top: 1px solid #333;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.footer p {
+  margin: 0;
+}
+
