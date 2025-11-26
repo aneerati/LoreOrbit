@@ -24,3 +24,6 @@ hs_err_pid*
 replay_pid*
 
 .DS_Store
+/target/
+
+src/main/resources/loreorbit-firebase-adminsdk-fbsvc-960b789128.json
